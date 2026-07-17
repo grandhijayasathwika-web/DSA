@@ -17,10 +17,10 @@ class Solution(object):
         if not node:
             return node
         visited=set()
-        que=deque([node])
+        st=[node]
         m={}
-        while que:
-            n=que.popleft()
+        while st:
+            n=st.pop()
             if n in visited:
                 continue
             visited.add(n)
@@ -30,7 +30,7 @@ class Solution(object):
                 if neigh not in m:
                     m[neigh]=Node(neigh.val)
                 m[n].neighbors.append(m[neigh])
-                que.append(neigh)
+                st.append(neigh)
         return m[node]
 
 
